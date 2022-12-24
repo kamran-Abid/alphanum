@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alphanum</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            height: 100vh;
+            background: aliceblue;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .main_div{   
+            margin-top: 10vh;
+        }
+
+        #input_alpha {
+            padding: 10px 20px;
+            font-size: 1.2rem;
+            color:#026fcf;
+            border: none;
+            border-radius: 20px 0 0 20px;
+            cursor: auto;
+        }
+
+        #input_alpha:focus {
+            outline: 1px dashed #026fcf;
+        }
+
+        #input_alpha::placeholder {
+            /* Chrome, Firefox, Opera, Safari 10.1+ */
+            color: #026fcf;
+            opacity: .5;
+            /* Firefox */
+        }
+
+        .btn {
+            padding: 10px 20px;
+            border-radius: 0 20px 20px 0;
+            color: white;
+            background: #026fcf;
+            border: none;
+            transition: 0.5s ease-in-out;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            border: 2px solid #026fcf;
+            color: #026fcf;
+            background: aliceblue;
+        }
+        #strp{
+            margin-top: 20px;
+            color: #026fcf;
+            font-size: 3rem;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="main_div">
+        <input type="text" id="input_alpha" placeholder="Type any alphabet ... " />
+        <button class="btn" onclick="alphanum()">Convert</button>
+    </div>
+    <p id="strp"></p>
+</body>
+<script type="text/javascript">
+    function alphanum() {
+        var alpha = document.getElementById('input_alpha').value.trim().toLowerCase();
+        var str = '';
+        var nums = 0, sum = 0;
+        // for(var i=97; i<97+26; i++){
+        //     console.log(String.fromCharCode(i));
+        // }
+        for (var i = 0; i < alpha.length; i++) {
+            nums = alpha.charCodeAt(i);
+            nums -= 96;
+            if (nums < 10) {
+                str += "0";
+            }
+            sum += nums;
+            str += nums;
+        }
+        document.getElementById('strp').innerText = sum;
+        document.getElementById('input_alpha').value = '';
+    }
+</script>
+
+</html>
